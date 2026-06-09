@@ -1,26 +1,9 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState } from 'react';
+import { Menu, X, Clock } from 'lucide-react';
 import { NAV_LINKS } from '../shared/types';
 
 export default function Navigation() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [londonTime, setLondonTime] = useState('');
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const london = new Intl.DateTimeFormat('en-GB', {
-        timeZone: 'Europe/London',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: false,
-      }).format(now);
-      setLondonTime(london);
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 60000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl">
@@ -28,7 +11,7 @@ export default function Navigation() {
       <div className="liquid-glass-dark flex items-center justify-between px-6 py-3">
         {/* Logo */}
         <a href="/" className="text-white font-semibold text-lg tracking-tight">
-          Axion<span className="text-orange-500">.</span>
+          Axion<span className="text-orange-500">.</span> Dental
         </a>
 
         {/* Nav Links - Desktop */}
@@ -45,24 +28,25 @@ export default function Navigation() {
           ))}
         </ul>
 
-        {/* Right side: Clock + CTA */}
+        {/* Right side: Status + CTA */}
         <div className="flex items-center gap-4">
-          {/* London Clock */}
+          {/* Clinic Status */}
           <div className="hidden sm:flex items-center gap-2 text-xs text-gray-400">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            <span>LON {londonTime}</span>
+            <Clock size={10} className="text-green-400" />
+            <span>Clinic Open | Appointments Available</span>
           </div>
 
-          {/* Book a Strategy Call - Desktop */}
+          {/* Book Appointment - Desktop */}
           <a
             href="#contact"
             className="group relative overflow-hidden hidden md:inline-flex items-center px-5 py-2 rounded-full bg-white text-axion-black text-sm font-medium transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:bg-orange-500 hover:text-white"
           >
             <span className="inline-block transition-transform duration-300 group-hover:-translate-y-6">
-              Book a strategy call
+              Book Appointment
             </span>
             <span className="absolute inset-0 flex items-center justify-center translate-y-6 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-              Book a strategy call
+              Book Appointment
             </span>
           </a>
 
@@ -116,13 +100,14 @@ export default function Navigation() {
             onClick={() => setIsMobileOpen(false)}
             className="w-full text-center px-5 py-3 rounded-full bg-white text-axion-black font-medium transition-all duration-500 hover:bg-orange-500 hover:text-white"
           >
-            Book a strategy call
+            Book Appointment
           </a>
 
-          {/* London Time in Mobile */}
+          {/* Clinic Status in Mobile */}
           <div className="flex items-center justify-center gap-2 text-xs text-gray-400">
             <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-            <span>London {londonTime}</span>
+            <Clock size={10} className="text-green-400" />
+            <span>Clinic Open | Appointments Available</span>
           </div>
         </div>
       </div>

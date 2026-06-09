@@ -1,5 +1,5 @@
 import { Swirl, ChromaFlow, FlutedGlass, FilmGrain, Group } from 'shaders/react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
 import Navigation from '../navigation/Navigation';
 
 export default function HeroSection() {
@@ -61,39 +61,59 @@ export default function HeroSection() {
 
       {/* Hero Content at bottom */}
       <div className="relative z-10 flex flex-col justify-end min-h-screen px-6 pb-24 md:pb-32 max-w-7xl mx-auto">
-        {/* Main Headline */}
-        <h1 className="text-[clamp(2.5rem,8vw,7rem)] font-bold leading-[0.85] tracking-[-0.04em] text-white max-w-5xl">
-          We craft digital
-          <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600">
-            experiences
-          </span>
-          <br />
-          that dominate.
-        </h1>
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+          {/* Main Headline + Content */}
+          <div className="flex-1">
+            <h1 className="text-[clamp(2rem,6vw,5.5rem)] font-bold leading-[0.9] tracking-[-0.04em] text-white max-w-3xl">
+              Advanced Dental Care
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600">
+                Precision, Comfort,
+              </span>
+              <br />
+              and Artistry.
+            </h1>
 
-        {/* Subheadline + CTA */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mt-8 md:mt-12">
-          <p className="text-gray-400 text-[clamp(0.875rem,2vw,1.125rem)] max-w-md leading-relaxed">
-            Strategy-led creative that combines bold design with cutting-edge technology to position your brand at the forefront of your industry.
-          </p>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mt-6 md:mt-10">
+              <p className="text-gray-400 text-[clamp(0.875rem,2vw,1.125rem)] max-w-md leading-relaxed">
+                Where cutting-edge technology meets compassionate care. 
+                Every smile is crafted with precision, comfort, and artistry 
+                — because you deserve nothing less than extraordinary.
+              </p>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            {/* Start a project CTA */}
-            <a
-              href="#contact"
-              className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-axion-black font-medium transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:bg-orange-500 hover:text-white hover:gap-4"
-            >
-              Start a project
-              <ArrowRight size={18} className="transition-transform duration-500 group-hover:translate-x-1" />
-            </a>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                {/* Book Appointment CTA */}
+                <a
+                  href="#contact"
+                  className="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-axion-black font-medium transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:bg-orange-500 hover:text-white hover:gap-4"
+                >
+                  Book Appointment
+                  <ArrowRight size={18} className="transition-transform duration-500 group-hover:translate-x-1" />
+                </a>
 
-            {/* Certified Partner Badge */}
-            <div className="flex items-center gap-2 text-xs text-gray-500">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" />
-              </svg>
-              <span>Certified Partner</span>
+                {/* Top-Rated Clinic Badge */}
+                <div className="flex items-center gap-2 text-xs text-gray-500">
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={14} className="text-yellow-500 fill-yellow-500" />
+                    ))}
+                  </div>
+                  <span>Top-Rated Clinic 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Doctor Portrait */}
+          <div className="flex-shrink-0 lg:mb-0 mb-4">
+            <div className="relative w-40 h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 rounded-2xl overflow-hidden border-2 border-white/10 shadow-2xl">
+              <img
+                src="/assets/doctor.svg"
+                alt="Dr. Alexandra — Lead Dentist"
+                className="w-full h-full object-cover"
+              />
+              {/* Glowing ring effect */}
+              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/20" />
             </div>
           </div>
         </div>

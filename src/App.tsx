@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import HeroSection from './components/hero/HeroSection';
 import AboutSection from './components/sections/AboutSection';
-import CaseStudiesSection from './components/sections/CaseStudiesSection';
+import ServicesSection from './components/sections/ServicesSection';
+import ReviewsSection from './components/sections/ReviewsSection';
+import Footer from './components/sections/Footer';
+import ChatBot from './components/ui/ChatBot';
+import WhatsAppWidget from './components/ui/WhatsAppWidget';
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,8 +22,18 @@ function App() {
       {/* About Section */}
       <AboutSection />
 
-      {/* Case Studies Section */}
-      <CaseStudiesSection />
+      {/* Services Section */}
+      <ServicesSection />
+
+      {/* Reviews Section */}
+      <ReviewsSection />
+
+      {/* Footer */}
+      <Footer />
+
+      {/* Floating Widgets */}
+      <ChatBot />
+      <WhatsAppWidget />
     </div>
   );
 }
